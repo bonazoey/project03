@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="MY COMPANY의 소개와 핵심 가치, 문의 안내를 만나보세요.">
+    <title th:text="${companyName} + ' | 함께 만드는 내일'">MY COMPANY</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
+<body>
+<a class="skip-link" th:href="@{#main}">본문 바로가기</a>
+<header class="header">
+    <div class="container header-inner">
+        <a class="brand" th:href="@{#home}" aria-label="MY COMPANY 홈"><span class="brand-mark" aria-hidden="true">M</span><span th:text="${companyName}">MY COMPANY</span></a>
+        <nav aria-label="주 메뉴">
+            <a th:href="@{#home}">홈</a>
+            <a th:href="@{#about}">회사 소개</a>
+            <a th:href="@{#values}">핵심 가치</a>
+            <a class="nav-contact" th:href="@{#contact}">문의 안내 <span aria-hidden="true">↗</span></a>
+        </nav>
+    </div>
+</header>
+<main id="main" tabindex="-1">
+    <section id="home" class="hero" aria-labelledby="hero-title">
+        <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><div class="art-grid"></div></div>
+        <div class="container hero-content">
+            <p class="eyebrow light">TOGETHER, TOWARD TOMORROW</p>
+            <h1 id="hero-title">더 나은 내일,<br>함께 만들어갑니다<span class="accent-dot">.</span></h1>
+            <p class="hero-description">신뢰를 바탕으로 새로운 가능성에 도전합니다.<br>사람과 사람을 연결하며 함께 성장하는 기업, MY COMPANY.</p>
+            <a class="button" th:href="@{#about}">우리 회사 알아보기 <span aria-hidden="true">↗</span></a>
+            <div class="hero-bottom"><span>신뢰에서 시작해, 성장으로 이어지는 여정</span><a th:href="@{#about}" aria-label="회사 소개로 이동">SCROLL DOWN <span aria-hidden="true">↓</span></a></div>
+        </div>
+    </section>
+    <section id="about" class="about section" aria-labelledby="about-title">
+        <div class="container about-grid">
+            <div><p class="eyebrow">01 / ABOUT US</p><h2 id="about-title">좋은 변화는<br>함께하는 마음에서.</h2></div>
+            <div class="about-description"><p class="lead">우리는 사람의 가능성을 믿습니다.<br>그리고 함께할 때 더 멀리 갈 수 있다고 믿습니다.</p><p>MY COMPANY는 신뢰, 도전, 동반 성장의 가치를 바탕으로 더 나은 미래를 만들어갑니다. 서로 다른 생각에 귀 기울이고, 열린 소통으로 새로운 방향을 찾습니다.</p><p>오늘의 작은 실천이 내일의 의미 있는 변화가 되도록.<br>고객과 파트너, 그리고 동료와 함께 한 걸음씩 나아가겠습니다.</p><span class="about-signature">MY COMPANY <span aria-hidden="true">—</span> 함께 만드는 내일</span></div>
+        </div>
+    </section>
+    <section id="values" class="values section" aria-labelledby="values-title">
+        <div class="container">
+            <div class="section-heading"><div><p class="eyebrow">02 / OUR VALUES</p><h2 id="values-title">우리가 지켜가는 가치</h2></div><p>변화하는 세상 속에서도<br>우리의 방향을 이끄는 세 가지 기준입니다.</p></div>
+            <div class="value-grid">
+                <article class="value-card" th:each="value : ${values}">
+                    <span class="value-number" th:text="${value.number}">01</span>
+                    <h3 th:text="${value.title}">신뢰</h3>
+                    <p class="value-subtitle" th:text="${value.subtitle}">약속을 지키는 태도</p>
+                    <p th:text="${value.description}">작은 약속부터 성실하게 지킵니다.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+<footer id="contact" aria-labelledby="contact-title">
+    <div class="container footer-main"><div><p class="eyebrow light">03 / CONTACT</p><h2 id="contact-title">함께할 다음 이야기를<br>기다립니다.</h2></div><div class="contact-info"><span class="status"><span aria-hidden="true">●</span> 문의 채널 준비 중</span><p>연락처와 주소는 준비 중입니다.<br>문의 채널이 마련되면 이곳에서 안내하겠습니다.</p></div></div>
+    <div class="container footer-bottom"><a class="brand" th:href="@{#home}" th:text="${companyName}">MY COMPANY</a><small>© <span th:text="${currentYear}">2026</span> MY COMPANY. All rights reserved.</small><a th:href="@{#home}">맨 위로 <span aria-hidden="true">↑</span></a></div>
+</footer>
+</body>
+</html>
